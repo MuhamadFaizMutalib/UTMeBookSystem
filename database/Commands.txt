@@ -1,0 +1,25 @@
+mysql -u root -p
+FreshTomatoJuice2$
+######################################################
+
+[To Connect RenderDB ]
+
+
+
+
+########################################################
+
+[ Create DB ]
+
+CREATE DATABASE UTMeBook;
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'FreshTomatoJuice2$';
+FLUSH PRIVILEGES;
+
+#########################################################
+
+[ View ]
+\dt
+\d table_name
+\q = to quit
+
