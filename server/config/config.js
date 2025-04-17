@@ -15,11 +15,11 @@ module.exports = {
   // }
 
   mail: {
-    service: "gmail",
-    auth: {
-      user: "gengcangkui@gmail.com",
-      pass: "xego euqm xrjf mrks"  // Use App Password, not your regular Gmail password
-    },
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false,
+    user: "gengcangkui@gmail.com",
+    password: "xego euqm xrjf mrks",  // Your app password
     from: '"UTMeBookSys" <gengcangkui@gmail.com>'
   }
 };
