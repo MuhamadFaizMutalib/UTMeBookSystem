@@ -85,6 +85,16 @@ angular.module('authApp.auth', [])
           $scope.error = error.data.message || 'Login failed. Please try again.';
         });
     };
+
+    $scope.passwordsMatch = function() {
+      // Only check if both fields have values
+      if ($scope.user.password && $scope.user.confirmPassword) {
+        return $scope.user.password === $scope.user.confirmPassword;
+      }
+      // If one or both fields are empty, don't show error yet
+      return true;
+    };
+    
     
     // Register function - final step
     $scope.register = function() {
@@ -108,3 +118,4 @@ angular.module('authApp.auth', [])
         });
     };
   }]);
+
