@@ -5,7 +5,7 @@ FreshTomatoJuice2$
 [To Connect RenderDB ]
 
 To connect WITH WEB@GIT Deployment = postgresql://utmebookdb_user:3WpIOVlDseuWlBnOZ3tvMTHnp9VJ1r5q@dpg-d00ck4adbo4c738upcug-a/utmebookdb 
-To connect WITH cmd Controls = postgresql://utmebookdb_user:3WpIOVlDseuWlBnOZ3tvMTHnp9VJ1r5q@dpg-d00ck4adbo4c738upcug-a.singapore-postgres.render.com/utmebookdb
+To connect WITH cmd Controls = psql postgresql://utmebookdb_user:3WpIOVlDseuWlBnOZ3tvMTHnp9VJ1r5q@dpg-d00ck4adbo4c738upcug-a.singapore-postgres.render.com/utmebookdb
 
 
 ########################################################

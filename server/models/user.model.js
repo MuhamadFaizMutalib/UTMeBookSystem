@@ -12,6 +12,14 @@ const User = function(user) {
 // Create a new user
 User.create = async (newUser, result) => {
   try {
+    // Check if email already exists
+    await User.findByEmail(newUser.email, (err, existingUser) => {
+      if (existingUser) {
+        result({ message: "Email already exists!" }, null);
+        return;
+      }
+    });
+    
     // Hash password before saving
     const salt = bcrypt.genSaltSync(10);
     newUser.password = bcrypt.hashSync(newUser.password, salt);

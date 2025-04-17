@@ -9,4 +9,13 @@ router.post('/signup', authController.signup);
 // User login
 router.post('/signin', authController.signin);
 
+// Check if email exists
+router.post('/check-email', authController.checkEmail);
+
+// Send OTP
+router.post('/send-otp', authController.sendOtp);
+
+// Verify OTP
+router.post('/verify-otp', authController.verifyOtp);
+
 module.exports = router;
