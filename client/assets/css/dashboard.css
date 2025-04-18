@@ -6,6 +6,8 @@
   padding: 0;
   background-color: #f5f5f5;
   box-sizing: border-box;
+  border-radius: 16px; /* Added more rounded corners to dashboard container */
+  overflow: hidden; /* To ensure content respects rounded corners */
 }
 
 /* Top Navigation */
@@ -15,6 +17,7 @@
   background-color: white;
   padding: 12px 15px;
   border-bottom: 1px solid #eee;
+  margin-bottom: 10px; /* Added gap below the navbar */
 }
 
 .nav-item {
@@ -55,6 +58,7 @@
 .search-container {
   padding: 15px;
   background-color: white;
+  margin-top: 10px; /* Added additional spacing */
 }
 
 .search-bar {
