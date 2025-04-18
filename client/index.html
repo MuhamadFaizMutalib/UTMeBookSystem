@@ -14,13 +14,14 @@
   <link rel="stylesheet" href="assets/css/dashboard.css">
   <link rel="stylesheet" href="assets/css/account.css">
 </head>
-<body>
+<body class="has-bg-image">
+  <div class="bg-overlay"></div>
 
   <!-- Navbar -->
   <div ng-include="'app/components/navbar.html'" ng-controller="NavbarController"></div>
   
   <!-- Main Content -->
-  <div class="container-fluid">
+  <div class="container-fluid main-container">
     <div ng-view></div>
   </div>
   
