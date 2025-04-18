@@ -24,3 +24,16 @@ FLUSH PRIVILEGES;
 \d table_name
 \q = to quit
 
+#########################################################
+
+[ REMOVE DATA ] 
+
+DELETE FROM ebooks
+WHERE author = 'John Doe';
+
+OR 
+
+DELETE FROM users
+WHERE id = 123;
+
+##########################################################

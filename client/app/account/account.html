@@ -1,0 +1,50 @@
+<!-- client/app/account/account.html - Account page -->
+<div class="account-container">
+    <!-- Back Button -->
+    <div class="back-button" ng-click="goToDashboard()">
+      <i class="fa fa-arrow-left"></i> Back to Dashboard
+    </div>
+    
+    <!-- Account Header -->
+    <div class="account-header">
+      <div class="profile-icon">
+        <i class="fa fa-user-circle"></i>
+      </div>
+      <h2>Account Details</h2>
+    </div>
+    
+    <!-- Loading Indicator -->
+    <div class="loading-indicator" ng-if="isLoading">
+      <i class="fa fa-spinner fa-spin"></i> Loading account details...
+    </div>
+    
+    <!-- Error Message -->
+    <div class="error-message" ng-if="error">
+      <i class="fa fa-exclamation-circle"></i> {{error}}
+    </div>
+    
+    <!-- Account Details -->
+    <div class="account-details" ng-if="!isLoading && !error">
+      <div class="detail-item">
+        <div class="label">Username</div>
+        <div class="value">{{user.username}}</div>
+      </div>
+      
+      <div class="detail-item">
+        <div class="label">Email</div>
+        <div class="value">{{user.email}}</div>
+      </div>
+      
+      <div class="detail-item">
+        <div class="label">User Role</div>
+        <div class="value role-badge" ng-class="{'admin': user.role === 'admin', 'public': user.role === 'public'}">
+          {{user.role}}
+        </div>
+      </div>
+      
+      <div class="detail-item">
+        <div class="label">Account Created</div>
+        <div class="value">{{user.created_at | date:'medium'}}</div>
+      </div>
+    </div>
+  </div>

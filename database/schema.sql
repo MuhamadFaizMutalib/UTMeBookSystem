@@ -10,7 +10,9 @@ CREATE TABLE IF NOT EXISTS users (
 );
 
 CREATE INDEX idx_users_email ON users(email);
+ALTER TABLE users ADD COLUMN IF NOT EXISTS role VARCHAR(50) DEFAULT 'public';
 
+CREATE INDEX IF NOT EXISTS idx_users_role ON users(role);
 
 -- Table for storing OTP codes
 CREATE TABLE IF NOT EXISTS otps (

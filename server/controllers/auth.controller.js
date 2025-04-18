@@ -157,7 +157,8 @@ exports.signup = (req, res) => {
     const user = new User({
       username: req.body.username,
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
+      role: 'public' // Default role for signup
     });
 
     // Save user in the database
@@ -173,7 +174,7 @@ exports.signup = (req, res) => {
       otpService.removeOTP(req.body.email);
       
       // Generate token
-      const token = jwt.sign({ id: data.id }, config.jwtSecret, {
+      const token = jwt.sign({ id: data.id, role: data.role }, config.jwtSecret, {
         expiresIn: config.jwtExpiration
       });
       
@@ -183,7 +184,8 @@ exports.signup = (req, res) => {
         user: {
           id: data.id,
           username: data.username,
-          email: data.email
+          email: data.email,
+          role: data.role
         },
         token: token
       });
@@ -226,8 +228,8 @@ exports.signin = (req, res) => {
       });
     }
     
-    // Generate token
-    const token = jwt.sign({ id: user.id }, config.jwtSecret, {
+    // Generate token with role information
+    const token = jwt.sign({ id: user.id, role: user.role }, config.jwtSecret, {
       expiresIn: config.jwtExpiration
     });
     
@@ -237,9 +239,33 @@ exports.signin = (req, res) => {
       user: {
         id: user.id,
         username: user.username,
-        email: user.email
+        email: user.email,
+        role: user.role
       },
       token: token
+    });
+  });
+};
+
+// Get user profile
+exports.getUserProfile = (req, res) => {
+  // Get user ID from decoded token
+  const userId = req.userId;
+  
+  User.findById(userId, (err, userData) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        return res.status(404).send({
+          message: "User not found."
+        });
+      }
+      return res.status(500).send({
+        message: "Error retrieving user details"
+      });
+    }
+    
+    res.send({
+      user: userData
     });
   });
 };

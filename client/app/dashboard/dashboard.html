@@ -1,15 +1,72 @@
 <!-- client/app/dashboard/dashboard.html - Dashboard page -->
-<div class="row">
-    <div class="col-md-12">
-      <div class="card">
-        <div class="card-header bg-primary text-white">
-          <h4 class="mb-0">Welcome to your Dashboard</h4>
-        </div>
-        <div class="card-body">
-          <h5>Hello, {{username}}!</h5>
-          <p>You have successfully logged in to your account.</p>
-          <p>This is a protected area of the application that only authenticated users can access.</p>
-        </div>
-      </div>
+<div class="dashboard-container">
+  <!-- Top Navigation Bar -->
+  <div class="top-nav">
+    <div class="nav-item active">
+      <i class="fa fa-home"></i>
+      <span>Home</span>
+    </div>
+    <div class="nav-item">
+      <i class="fa fa-chart-line"></i>
+      <span>Activity</span>
+    </div>
+    <div class="nav-item">
+      <i class="fa fa-dollar-sign"></i>
+      <span>Finance</span>
+    </div>
+    <div class="nav-item">
+      <i class="fa fa-envelope"></i>
+      <span>Messages</span>
+      <span class="badge">1</span>
+    </div>
+    <div class="nav-item" ng-click="goToAccount()">
+      <i class="fa fa-user"></i>
+      <span>Account</span>
     </div>
   </div>
+  
+  <!-- Search Bar -->
+  <div class="search-container">
+    <div class="search-bar">
+      <i class="fa fa-search"></i>
+      <input type="text" placeholder="Search places">
+      <i class="fa fa-heart-o"></i>
+    </div>
+  </div>
+  
+  <!-- Main Content Area - Empty for Image Placeholder -->
+  <div class="content-area">
+    <div class="image-placeholder">
+      <!-- Image will be uploaded later -->
+      <p>Image placeholder - content will be added later</p>
+    </div>
+  </div>
+  
+  <!-- Recommendations Section -->
+  <div class="recommendations">
+    <div class="section-header">
+      <h3>Recommended restaurants</h3>
+      <a href="#" class="view-all">→</a>
+    </div>
+    <!-- Empty Restaurant Cards for Layout Only -->
+    <div class="restaurant-list">
+      <div class="restaurant-card"></div>
+      <div class="restaurant-card"></div>
+      <div class="restaurant-card"></div>
+    </div>
+  </div>
+  
+  <!-- Order Section -->
+  <div class="order-section">
+    <div class="section-header">
+      <h3>Order dinner from</h3>
+      <a href="#" class="view-all">→</a>
+    </div>
+    <!-- Empty Order Cards for Layout Only -->
+    <div class="order-list">
+      <div class="order-card"></div>
+      <div class="order-card"></div>
+      <div class="order-card"></div>
+    </div>
+  </div>
+</div>

@@ -7,6 +7,7 @@ const User = function(user) {
   this.username = user.username;
   this.email = user.email;
   this.password = user.password;
+  this.role = user.role || 'public'; // Default role is public
 };
 
 // Create a new user
@@ -25,8 +26,8 @@ User.create = async (newUser, result) => {
     newUser.password = bcrypt.hashSync(newUser.password, salt);
     
     const res = await pool.query(
-      "INSERT INTO users (username, email, password) VALUES ($1, $2, $3) RETURNING id",
-      [newUser.username, newUser.email, newUser.password]
+      "INSERT INTO users (username, email, password, role) VALUES ($1, $2, $3, $4) RETURNING id",
+      [newUser.username, newUser.email, newUser.password, newUser.role]
     );
     
     console.log("Created user: ", { id: res.rows[0].id, ...newUser });
@@ -43,6 +44,28 @@ User.findByEmail = async (email, result) => {
     const res = await pool.query(
       "SELECT * FROM users WHERE email = $1",
       [email]
+    );
+    
+    if (res.rows.length) {
+      console.log("Found user: ", res.rows[0]);
+      result(null, res.rows[0]);
+      return;
+    }
+    
+    // User not found
+    result({ kind: "not_found" }, null);
+  } catch (err) {
+    console.log("Error: ", err);
+    result(err, null);
+  }
+};
+
+// Find user by ID
+User.findById = async (id, result) => {
+  try {
+    const res = await pool.query(
+      "SELECT id, username, email, role, created_at, updated_at FROM users WHERE id = $1",
+      [id]
     );
     
     if (res.rows.length) {
