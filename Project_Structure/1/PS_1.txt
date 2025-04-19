@@ -2,20 +2,20 @@ UTMeBookSys/
 │
 ├── client/                     # AngularJS frontend
 │   ├── app/
-│   │   ├── auth/
-│   │   │   ├── login.html
-│   │   │   ├── register.html
-│   │   │   └── auth.js
 │   │   ├── dashboard/
 │   │   │   ├── dashboard.html
 │   │   │   └── dashboard.js
 │   │   ├── components/
 │   │   │   └── navbar.html
+│   │   ├── account/
+│   │   │   └── account.html
+│   │   │   └── account.js
 │   │   ├── app.js              # Main angular module
 │   │   └── routes.js           # Angular routes
 │   ├── assets/
 │   │   ├── css/
 │   │   │   └── style.css
+│   │   │   └── dashboard.css
 │   │   └── img/
 │   ├── index.html              # Main HTML file 
 │
@@ -29,9 +29,8 @@ UTMeBookSys/
 │   │   └── user.model.js       # User model
 │   ├── routes/
 │   │   └── auth.routes.js      # Authentication routes
-│   ├── services/
-│   │   └── email.service.js
-│   │   └── otp.service.js
+│   ├── middleware/
+│   │   └── authJwt.js 
 │ 
 ├── server.js               # Main server file
 └── package.json            # Backend dependencies
