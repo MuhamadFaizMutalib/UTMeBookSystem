@@ -1,0 +1,88 @@
+<!-- client/app/dashboard/dashboard.html - Dashboard page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="dashboard.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+  <title>Dashboard</title>
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Top Navigation Bar -->
+    <div class="top-nav">
+      <div class="nav-item active">
+        <i class="fa fa-book-medical"></i>
+        <span>Add Book</span>
+      </div>
+      <div class="nav-item">
+        <i class="fa fa-shopping-cart"></i>
+        <span>Cart</span>
+      </div>
+      <div class="nav-item">
+        <i class="fa fa-receipt"></i>
+        <span>Order</span>
+      </div>
+      <div class="nav-item">
+        <i class="fa fa-envelope"></i>
+        <span>Messages</span>
+        <span class="badge">1</span>
+      </div>
+      <div class="nav-item" ng-click="goToAccount()">
+        <i class="fa fa-user"></i>
+        <span>Account</span>
+      </div>
+    </div>
+    
+    <!-- Search Bar -->
+    <div class="search-container">
+      <div class="search-bar">
+        <i class="fa fa-search"></i>
+        <input type="text" placeholder="Search places">
+        <i class="fa fa-heart"></i>
+      </div>
+    </div>
+    
+    <!-- Main Content Area - Empty for Image Placeholder -->
+    <div class="content-area">
+      <div class="image-placeholder">
+        <!-- Image will be uploaded later -->
+        <p>Image placeholder - content will be added later</p>
+      </div>
+    </div>
+    
+
+    <div class="recommendations">
+      <div class="section-header">
+        <h3>New Arrivals</h3>
+        <a href="#" class="view-all">→</a>
+      </div>
+
+      <div class="book-list">
+        <div class="book-card"></div>
+        <div class="book-card"></div>
+        <div class="book-card"></div>
+        <div class="book-card"></div>
+        <div class="book-card"></div>
+      </div>
+    </div>
+    
+
+    <div class="wishlist-section">
+      <div class="section-header">
+        <h3>Wishlist</h3>
+        <a href="#" class="view-all">→</a>
+      </div>
+
+      <div class="wishlist-list">
+        <div class="wishlist-card"></div>
+        <div class="wishlist-card"></div>
+        <div class="wishlist-card"></div>
+        <div class="wishlist-card"></div>
+        <div class="wishlist-card"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

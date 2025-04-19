@@ -1,0 +1,45 @@
+# Authentication System Project Structure
+
+The project is structured as follows:
+
+```
+UTMeBookSys/
+│
+├── client/                     # AngularJS frontend
+│   ├── app/
+│   │   ├── auth/
+│   │   │   ├── login.html
+│   │   │   ├── register.html
+│   │   │   └── auth.js
+│   │   ├── dashboard/
+│   │   │   ├── dashboard.html
+│   │   │   └── dashboard.js
+│   │   ├── components/
+│   │   │   └── navbar.html
+│   │   ├── app.js              # Main angular module
+│   │   └── routes.js           # Angular routes
+│   ├── assets/
+│   │   ├── css/
+│   │   │   └── style.css
+│   │   └── img/
+│   ├── index.html              # Main HTML file
+│   └── bower.json              # Frontend dependencies
+│
+├── server/                     # Node.js backend
+│   ├── config/
+│   │   ├── database.js         # MySQL connection config
+│   │   └── config.js           # Server configuration
+│   ├── controllers/
+│   │   └── auth.controller.js  # Authentication controller
+│   ├── models/
+│   │   └── user.model.js       # User model
+│   ├── routes/
+│   │   └── auth.routes.js      # Authentication routes
+│   ├── server.js               # Main server file
+│   └── package.json            # Backend dependencies
+│
+├── database/
+│   └── schema.sql              # MySQL schema
+│
+└── README.md                   # Project documentation
+```

@@ -23,3 +23,19 @@ CREATE TABLE IF NOT EXISTS otps (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   UNIQUE(email)
 );
+
+
+CREATE TABLE IF NOT EXISTS books (
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  category VARCHAR(100) NOT NULL,
+  price DECIMAL(10, 2) NOT NULL,
+  description TEXT,
+  cover_image VARCHAR(255),
+  upload_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  seller_id INTEGER NOT NULL,
+  FOREIGN KEY (seller_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE INDEX idx_books_upload_date ON books(upload_date);
+CREATE INDEX idx_books_seller_id ON books(seller_id);

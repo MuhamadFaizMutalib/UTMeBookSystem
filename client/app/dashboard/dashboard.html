@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="../../assets/css/dashboard.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
   <title>Dashboard</title>
 </head>
@@ -12,7 +12,7 @@
   <div class="dashboard-container">
     <!-- Top Navigation Bar -->
     <div class="top-nav">
-      <div class="nav-item active">
+      <div class="nav-item" ng-class="{'active': isAddBookActive}" ng-click="toggleAddBookForm()">
         <i class="fa fa-book-medical"></i>
         <span>Add Book</span>
       </div>
@@ -39,20 +39,72 @@
     <div class="search-container">
       <div class="search-bar">
         <i class="fa fa-search"></i>
-        <input type="text" placeholder="Search places">
+        <input type="text" placeholder="Search books" ng-model="searchQuery">
         <i class="fa fa-heart"></i>
       </div>
     </div>
     
-    <!-- Main Content Area - Empty for Image Placeholder -->
-    <div class="content-area">
-      <div class="image-placeholder">
-        <!-- Image will be uploaded later -->
-        <p>Image placeholder - content will be added later</p>
+    <!-- Add Book Form -->
+    <div class="content-area" ng-if="showAddBookForm">
+      <div class="add-book-form">
+        <h3>Add New Book</h3>
+        <form ng-submit="uploadBook()" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="book-title">Title</label>
+            <input type="text" id="book-title" ng-model="newBook.title" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="book-category">Category/Genre</label>
+            <select id="book-category" ng-model="newBook.category" required>
+              <option value="">Select a category</option>
+              <option value="Fiction">Fiction</option>
+              <option value="Non-fiction">Non-fiction</option>
+              <option value="Academic">Academic</option>
+              <option value="Science">Science</option>
+              <option value="Technology">Technology</option>
+              <option value="Art">Art</option>
+              <option value="History">History</option>
+              <option value="Biography">Biography</option>
+              <option value="Self-help">Self-help</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="book-price">Price (RM)</label>
+            <input type="number" id="book-price" ng-model="newBook.price" min="0" step="0.01" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="book-description">Description</label>
+            <textarea id="book-description" ng-model="newBook.description" rows="4"></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label for="cover-image">Cover Image</label>
+            <div class="image-upload-container">
+              <input type="file" id="cover-image" file-model="coverImage" accept="image/jpeg, image/png" required>
+              <div class="image-preview" ng-if="imagePreview">
+                <img ng-src="{{imagePreview}}" alt="Cover preview">
+              </div>
+            </div>
+          </div>
+          
+          <button type="submit" class="btn-submit">Upload Book</button>
+        </form>
       </div>
     </div>
     
-
+    <!-- Main Content Area - Empty for Image Placeholder (when not adding book) -->
+    <div class="content-area" ng-if="!showAddBookForm">
+      <div class="image-placeholder">
+        <!-- Image will be uploaded later -->
+        <p>Image placeholder - click on "Add Book" to upload a new book</p>
+      </div>
+    </div>
+    
+    <!-- New Arrivals Section -->
     <div class="recommendations">
       <div class="section-header">
         <h3>New Arrivals</h3>
@@ -60,15 +112,19 @@
       </div>
 
       <div class="book-list">
-        <div class="book-card"></div>
-        <div class="book-card"></div>
-        <div class="book-card"></div>
-        <div class="book-card"></div>
-        <div class="book-card"></div>
+        <div class="book-card" ng-repeat="book in books | orderBy:'-upload_date'">
+          <div class="book-cover">
+            <img ng-src="{{book.cover_image}}" alt="{{book.title}} Cover">
+          </div>
+          <div class="book-info">
+            <h4>{{book.title}}</h4>
+            <p class="book-price">RM {{book.price}}</p>
+          </div>
+        </div>
       </div>
     </div>
     
-
+    <!-- Wishlist Section -->
     <div class="wishlist-section">
       <div class="section-header">
         <h3>Wishlist</h3>

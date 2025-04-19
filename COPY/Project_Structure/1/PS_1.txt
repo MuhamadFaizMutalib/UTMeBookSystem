@@ -1,0 +1,36 @@
+UTMeBookSys/
+│
+├── client/                     # AngularJS frontend
+│   ├── app/
+│   │   ├── dashboard/
+│   │   │   ├── dashboard.html
+│   │   │   └── dashboard.js
+│   │   ├── components/
+│   │   │   └── navbar.html
+│   │   ├── account/
+│   │   │   └── account.html
+│   │   │   └── account.js
+│   │   ├── app.js              # Main angular module
+│   │   └── routes.js           # Angular routes
+│   ├── assets/
+│   │   ├── css/
+│   │   │   └── style.css
+│   │   │   └── dashboard.css
+│   │   └── img/
+│   ├── index.html              # Main HTML file 
+│
+├── server/                     # Node.js backend
+│   ├── config/
+│   │   ├── database.js         # MySQL connection config
+│   │   └── config.js           # Server configuration
+│   ├── controllers/
+│   │   └── auth.controller.js  # Authentication controller
+│   ├── models/
+│   │   └── user.model.js       # User model
+│   ├── routes/
+│   │   └── auth.routes.js      # Authentication routes
+│   ├── middleware/
+│   │   └── authJwt.js 
+│ 
+├── server.js               # Main server file
+└── package.json            # Backend dependencies

@@ -16,6 +16,7 @@ app.use(express.static(path.join(__dirname, './client')));
 
 // Routes
 app.use('/api/auth', require('./server/routes/auth.routes'));
+app.use('/api/books', require('./server/routes/book.routes')); // Add this line
 
 // Serve the AngularJS app for any other routes
 app.get('*', (req, res) => {
@@ -26,19 +27,3 @@ app.get('*', (req, res) => {
 app.listen(config.port, () => {
   console.log(`Server is running on port ${config.port}`);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

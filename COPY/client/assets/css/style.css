@@ -1,0 +1,94 @@
+body {
+  background-color: #f8f9fa;
+  padding-bottom: 30px;
+  min-height: 100vh;
+}
+
+/* Background image styling */
+.has-bg-image {
+  background-image: url('../img/Background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.bg-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 0;
+}
+
+.main-container {
+  position: relative;
+  z-index: 1;
+}
+
+.card {
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  font-weight: bold;
+}
+
+.btn-primary {
+  background-color: #0d6efd;
+}
+
+.btn-primary:hover {
+  background-color: #0b5ed7;
+}
+
+/* Navbar brand icon */
+.brand-icon-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  color: #0d6efd;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+
+/* Animation for page transitions */
+.ng-enter {
+  transition: 0.3s;
+  opacity: 0;
+}
+
+.ng-enter-active {
+  opacity: 1;
+}
+
+/* Auth container for login/register pages */
+.auth-container {
+  position: relative;
+  z-index: 1;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+/* Media queries for responsive design */
+@media (min-width: 768px) {
+  .auth-container {
+    padding-top: 80px;
+  }
+  
+  .brand-icon-circle {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+@media (min-width: 992px) {
+  .auth-container {
+    padding-top: 100px;
+  }
+}
