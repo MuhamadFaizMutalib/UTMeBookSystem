@@ -84,7 +84,7 @@
           <div class="form-group">
             <label for="cover-image">Cover Image</label>
             <div class="image-upload-container">
-              <input type="file" id="cover-image" file-model="coverImage" accept="image/jpeg, image/png" required>
+              <input type="file" id="cover-image" onchange="angular.element(this).scope().setFile(this)" accept="image/jpeg, image/png" required>
               <div class="image-preview" ng-if="imagePreview">
                 <img ng-src="{{imagePreview}}" alt="Cover preview">
               </div>

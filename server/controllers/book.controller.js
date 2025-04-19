@@ -101,3 +101,21 @@ exports.findByUserId = async (req, res) => {
     res.status(500).json({ success: false, message: 'Server error' });
   }
 };
+
+
+$scope.setFile = function(element) {
+  $scope.$apply(function() {
+    $scope.coverImage = element.files[0];
+    
+    // Add image preview
+    if ($scope.coverImage) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        $scope.$apply(function() {
+          $scope.imagePreview = e.target.result;
+        });
+      };
+      reader.readAsDataURL($scope.coverImage);
+    }
+  });
+};
