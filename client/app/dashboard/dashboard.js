@@ -1,7 +1,6 @@
 // client/app/dashboard/dashboard.js - Dashboard controller
 angular.module('authApp.dashboard', [])
 
-// File upload directive
 .directive('fileModel', ['$parse', function ($parse) {
   return {
     restrict: 'A',
@@ -62,6 +61,24 @@ angular.module('authApp.dashboard', [])
       seller_id: $scope.userId
     };
     
+    // File handling function
+    $scope.setFile = function(element) {
+      $scope.$apply(function() {
+        $scope.coverImage = element.files[0];
+        
+        // Add image preview
+        if ($scope.coverImage) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            $scope.$apply(function() {
+              $scope.imagePreview = e.target.result;
+            });
+          };
+          reader.readAsDataURL($scope.coverImage);
+        }
+      });
+    };
+    
     // Navigate to account page
     $scope.goToAccount = function() {
       $location.path('/account');
@@ -69,7 +86,7 @@ angular.module('authApp.dashboard', [])
     
     // Upload book
     $scope.uploadBook = function() {
-      console.log("Cover image:", $scope.coverImage); // Add this to debug
+      console.log("Cover image:", $scope.coverImage);
       
       if (!$scope.coverImage) {
         alert('Please select a cover image');
@@ -79,8 +96,6 @@ angular.module('authApp.dashboard', [])
       // First upload the image
       var formData = new FormData();
       formData.append('cover_image', $scope.coverImage);
-
-      console.log("Form data:", formData.get('cover_image'));
       
       $http({
         method: 'POST',
@@ -89,8 +104,8 @@ angular.module('authApp.dashboard', [])
           'Content-Type': undefined,
           'x-access-token': token
         },
-        data: formData,
-        transformRequest: angular.identity
+        transformRequest: angular.identity,
+        data: formData
       }).then(function(response) {
         if (response.data.success) {
           // Now create the book with the image path
