@@ -48,7 +48,7 @@
     <div class="content-area" ng-if="showAddBookForm">
       <div class="add-book-form">
         <h3>Add New Book</h3>
-        <form ng-submit="uploadBook()" enctype="multipart/form-data">
+        <form ng-submit="uploadBook()" enctype="multipart/form-data" name="bookForm">
           <div class="form-group">
             <label for="book-title">Title</label>
             <input type="text" id="book-title" ng-model="newBook.title" required>

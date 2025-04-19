@@ -9,7 +9,7 @@ angular.module('authApp.dashboard', [])
       const model = $parse(attrs.fileModel);
       const modelSetter = model.assign;
       
-      element.on('change', function() {
+      element.bind('change', function() {
         scope.$apply(function() {
           modelSetter(scope, element[0].files[0]);
           
@@ -69,6 +69,8 @@ angular.module('authApp.dashboard', [])
     
     // Upload book
     $scope.uploadBook = function() {
+      console.log("Cover image:", $scope.coverImage); // Add this to debug
+      
       if (!$scope.coverImage) {
         alert('Please select a cover image');
         return;
@@ -77,6 +79,8 @@ angular.module('authApp.dashboard', [])
       // First upload the image
       var formData = new FormData();
       formData.append('cover_image', $scope.coverImage);
+
+      console.log("Form data:", formData.get('cover_image'));
       
       $http({
         method: 'POST',
